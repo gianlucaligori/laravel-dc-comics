@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('thumb');
             $table->string('price', 10);
             $table->string('series', 20);
-            $table->data('sale_data');
+            $table->date('sale_date');
             $table->string('type', 20);
         });
     }
