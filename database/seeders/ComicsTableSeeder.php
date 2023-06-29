@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Comic;
-
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Comic;
 
 class ComicsTableSeeder extends Seeder
 {
@@ -16,8 +15,8 @@ class ComicsTableSeeder extends Seeder
      */
     public function run()
     {
-        $comics = config('comics');
-        foreach ($comics as $comic) {
+        foreach (config('comics') as $comic) {
+
             Comic::create([
                 'title' => $comic['title'],
                 'description' => $comic['description'],
@@ -28,6 +27,5 @@ class ComicsTableSeeder extends Seeder
                 'type' => $comic['type'],
             ]);
         }
-        // Esegui l'operazione desiderata per ogni dato nel seeder
     }
 }
