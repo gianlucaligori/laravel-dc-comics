@@ -1,6 +1,7 @@
 @extends('comics')
 
 @section('contents')
+    <form action="{{ route('comics.store') }}" method="post"></form>
     <div class="mb-3">
         <label for="formFile" class="form-label">Default file input example</label>
         <input class="form-control" type="file" id="formFile">
