@@ -1,25 +1,86 @@
 @extends('comics')
 
 @section('contents')
-    <form action="{{ route('comics.store') }}" method="post"></form>
-    <div class="mb-3">
-        <label for="formFile" class="form-label">Default file input example</label>
-        <input class="form-control" type="file" id="formFile">
-    </div>
-    <div class="mb-3">
-        <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-        <input class="form-control" type="file" id="formFileMultiple" multiple>
-    </div>
-    <div class="mb-3">
-        <label for="formFileDisabled" class="form-label">Disabled file input example</label>
-        <input class="form-control" type="file" id="formFileDisabled" disabled>
-    </div>
-    <div class="mb-3">
-        <label for="formFileSm" class="form-label">Small file input example</label>
-        <input class="form-control form-control-sm" id="formFileSm" type="file">
-    </div>
-    <div>
-        <label for="formFileLg" class="form-label">Large file input example</label>
-        <input class="form-control form-control-lg" id="formFileLg" type="file">
-    </div>
+    <form method="POST" action="{{ route('comics.store') }}">
+        @csrf
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Titolo</label>
+            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
+                value="{{ old('title') }}">
+            <div class="invalid-feedback">
+                @error('title')
+                    {{ $message }}
+                @enderror
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="thumb" class="form-label">Immagine</label>
+            <input type="text" class="form-control @error('thumb') is-invalid @enderror" id="thumb" name="thumb"
+                value="{{ old('thumb') }}">
+            <div class="invalid-feedback">
+                @error('thumb')
+                    {{ $message }}
+                @enderror
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Prezzo</label>
+            <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" name="price"
+                value="{{ old('price') }}">
+            <div class="invalid-feedback">
+                @error('price')
+                    {{ $message }}
+                @enderror
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="series" class="form-label">Serie</label>
+            <input type="text" class="form-control @error('series') is-invalid @enderror" id="series" name="series"
+                value="{{ old('series') }}">
+            <div class="invalid-feedback">
+                @error('series')
+                    {{ $message }}
+                @enderror
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="sale_date" class="form-label">Data Vendita</label>
+            <input type="date" class="form-control @error('sale_date') is-invalid @enderror" id="sale_date"
+                name="sale_date" value="{{ old('sale_date') }}">
+            <div class="invalid-feedback">
+                @error('sale_date')
+                    {{ $message }}
+                @enderror
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="peso" class="form-label">Tipologia</label>
+            <input type="text" class="form-control @error('type') is-invalid @enderror" id="type" name="type"
+                value="{{ old('type') }}">
+            <div class="invalid-feedback">
+                @error('type')
+                    {{ $message }}
+                @enderror
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="descrizione" class="form-label">Descrizione</label>
+            <textarea class="form-control @error('description') is-invalid @enderror" id="description" rows="3"
+                name="description">{{ old('description') }}</textarea>
+            <div class="invalid-feedback">
+                @error('description')
+                    {{ $message }}
+                @enderror
+            </div>
+        </div>
+
+        <button class="btn btn-primary">Salva</button>
+    </form>
 @endsection

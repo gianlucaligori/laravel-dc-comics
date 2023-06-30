@@ -24,13 +24,19 @@
                         <td>{{ $comic->sale_date }}</td>
                         <td>{{ $comic->type }}</td>
                         <td>
-                            <a class="btn btn-primary" href="">View</a>
-                            <a class="btn btn-warning" href="">Edit</a>
-                            <a class="btn btn-danger" href="">Delete</a>
+                            <div class="card-body">
+                                <a class="btn btn-primary"
+                                    href="{{ route('comics.show', ['comic' => $comic->id]) }}">View</a>
+                                <a class="btn btn-warning" href="">Edit</a>
+                                <a class="btn btn-danger" href="">Delete</a>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+    </div>
+    <div style=" row height: 100px; width:450px">
+        <ul>{{ $comics->links() }}</ul>
     </div>
 @endsection
